@@ -1,5 +1,5 @@
 # chat-app-helm-chart
-this repo is used for deploying chat-app
+this repo is used for deploying chat-app,
 this repos will contain all the files of
 what all to install (all have to run local)
 
@@ -9,7 +9,7 @@ what all to install (all have to run local)
 - jenkins
 
 
-the instaructions to deploy app
+the instructions of how to deploy app
 - dev-env
     - tools(local)
        - jenkins
