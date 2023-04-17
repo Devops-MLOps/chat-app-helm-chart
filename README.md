@@ -15,7 +15,7 @@ the instaructions to deploy app
        - jenkins
        - helm-chart
        - minikube
-       - opentelemetry for APM
+       - opentelemetry or promethus for APM grafana tools
        - nginx for load balancing anf reverse proxy
 - prod-env
     - tools(on aws)
@@ -24,3 +24,5 @@ the instaructions to deploy app
         - Kops (running k8s cluster on aws)
         - APM 
         - jenkins or tekton pipeline
+
+![architetcture](/images/architecture.png)
