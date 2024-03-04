@@ -6,7 +6,7 @@ on:
       main
 jobs:
   build:
-    run-as: ubuntu:latest
+    runs-on: ubuntu:latest
     steps:
       - name: trigger dev repo to build image
         uses: peter-evans/repository-dispatch@v1
