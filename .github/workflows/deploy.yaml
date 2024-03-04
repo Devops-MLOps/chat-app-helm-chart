@@ -13,4 +13,4 @@ jobs:
         with:
          token: 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
          repository: Devops-MLOps/real-time-chat-application
-         type: [infra_event]
+         event-type: [infra_event]
