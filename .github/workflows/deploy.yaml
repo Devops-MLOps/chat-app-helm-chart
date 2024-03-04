@@ -1,0 +1,16 @@
+name: deploy the app
+
+on:
+  push:
+    branches:
+      main
+jobs:
+  build:
+    run-as: ubuntu:latest
+    steps:
+      -name: trigger dev repo to build image
+       uses: peter-evans/repository-dispatch@v1
+       with:
+        token: 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
+        repository: Devops-MLOps/real-time-chat-application
+        type: [infra_event]

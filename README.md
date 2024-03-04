@@ -5,24 +5,26 @@ what all to install (all have to run local)
 
 - docker
 - helm
-- minikube
-- jenkins
+- minikube/kind/
+- git actions
 
 
 the instructions of how to deploy app
 - dev-env
     - tools(local)
-       - jenkins
        - helm-chart
        - minikube
-       - opentelemetry or promethus for APM grafana tools
-       - nginx for load balancing anf reverse proxy
+       - prometheus for APM grafana tools
+       - nginx for load balancing and reverse proxy
 - prod-env
     - tools(on aws)
         - terraform (if required)
         - EKS
         - Kops (running k8s cluster on aws)
         - APM 
-        - jenkins or tekton pipeline
+        - giit action
+- version
+    - node -> current-alpine3.19
+    - nginx -> 1.25.1
 
 ![architetcture](/images/architecture.png)
