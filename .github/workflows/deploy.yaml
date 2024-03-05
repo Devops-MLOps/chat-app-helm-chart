@@ -13,4 +13,4 @@ jobs:
         with:
          token: ${{ secrets.TOKEN_TO_TRIGGER }}
          repository: Devops-MLOps/real-time-chat-application
-         event-type: infra_event
+         event-type: infra-event
