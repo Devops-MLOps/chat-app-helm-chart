@@ -11,6 +11,6 @@ jobs:
       - name: trigger dev repo to build image
         uses: peter-evans/repository-dispatch@v1
         with:
-         token: ${{ secrets.token_to_trigger }}
+         token: ${{ secrets.Trigger_token }}
          repository: Devops-MLOps/real-time-chat-application
          event-type: infra_event
