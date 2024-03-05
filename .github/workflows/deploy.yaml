@@ -1,6 +1,9 @@
 name: deploy the app
 
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      main
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -10,4 +13,4 @@ jobs:
         with:
          token: ${{ secrets.TOKEN_TO_TRIGGER }}
          repository: Devops-MLOps/real-time-chat-application
-         event-type: infra-event
+         event-type: my-event
