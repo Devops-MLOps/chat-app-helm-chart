@@ -11,6 +11,6 @@ jobs:
       - name: trigger dev repo to build image
         uses: peter-evans/repository-dispatch@v1
         with:
-         token: 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
+         token: ${{ token_to_trigger }}
          repository: Devops-MLOps/real-time-chat-application
          event-type: infra_event
