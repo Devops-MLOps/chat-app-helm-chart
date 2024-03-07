@@ -8,5 +8,6 @@ jobs:
     if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     steps: 
-      - name: pull the image
-        run: docker pull aksrao1998/chat-app-be:${{github.event.client_payload.tag}}
+      - env:
+          TAG: ${{github.event.client_payload.tag}}
+        run: docker pull aksrao1998/chat-app-be:$TAG
