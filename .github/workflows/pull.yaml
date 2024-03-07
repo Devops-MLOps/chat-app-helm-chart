@@ -11,3 +11,4 @@ jobs:
       - env:
           TAG: ${{ github.event.client_payload.tag }}
         run: echo $TAG
+        run: docker pull aksrao1998/chat-app-be:$TAG
