@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - env:
-          TAG: ${{github.event.client_payload.tag}}
-        run: docker pull aksrao1998/chat-app-be:$TAG
+          TAG: ${{ github.event.client_payload.tag }}
+        run: echo $TAG
