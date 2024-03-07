@@ -2,7 +2,7 @@ name: pull the image
 
 on:
   repository_dispatch:
-    types: [pull]
+    types: [my-pull]
 jobs:
   run_if_failure:
     if: ${{ !github.event.client_payload.passed }}
