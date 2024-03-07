@@ -10,5 +10,3 @@ jobs:
     steps: 
       - name: pull the image
         run: docker pull aksrao1998/chat-app-be:${{github.event.client_payload.tag}}
-        IMAGE_NAME=$(docker inspect --format='{{index .RepoDigests 0}}' aksrao1998/chat-app-be:${{github.event.client_payload.tag}}
-        echo "Docker image name: $IMAGE_NAME"
