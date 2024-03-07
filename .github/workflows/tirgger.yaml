@@ -14,3 +14,5 @@ jobs:
          token: ${{ secrets.TOKEN_TO_TRIGGER }}
          repository: Devops-MLOps/real-time-chat-application
          event-type: my-event
+      
+
