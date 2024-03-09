@@ -1,4 +1,4 @@
-name: deploy the app
+name: trigger be build
 
 on:
   push:
@@ -13,4 +13,4 @@ jobs:
         with:
          token: ${{ secrets.TOKEN_TO_TRIGGER }}
          repository: Devops-MLOps/real-time-chat-application
-         event-type: my-event
+         event-type: be-event

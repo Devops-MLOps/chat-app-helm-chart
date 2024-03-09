@@ -1,0 +1,16 @@
+name: trigger fe build
+
+on:
+  push:
+    branches:
+      main
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: trigger dev repo to build image
+        uses: peter-evans/repository-dispatch@v1
+        with:
+         token: ${{ secrets.TOKEN_TO_TRIGGER }}
+         repository: Devops-MLOps/real-time-chat-application
+         event-type: fe-event
