@@ -1,9 +1,16 @@
 name: trigger be build
 
 on:
-  push:
-    branches:
-      main
+  workflow_dispatch:
+    inputs:
+      choice:
+        description: environmment
+        type: choice
+        default: dev
+        options:
+          - dev
+          - qa
+          - prod
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -14,3 +21,4 @@ jobs:
          token: ${{ secrets.TOKEN_TO_TRIGGER }}
          repository: Devops-MLOps/real-time-chat-application
          event-type: be-event
+         client-payload: '{"env": "${{github.event.inputs.choice}}"}'
