@@ -12,8 +12,7 @@ jobs:
       env: ${{ github.event.client_payload.env }}
       appName: ${{github.event.client_payload.appName}}
     steps: 
+      - name: checkout the repository
+        uses: actions/checkout@v2
       - name: build the helm chart
-        run: |
-          echo $TAG
-          echo $env
-          echo $appName
+        run: helm template ${{github.event.client_payload.appName}}-chart ./helm-chart --set env=${{github.event.client_payload.env} --set appName=${{github.event.client_payload.appName}} --set tag=${{github.event.client_payload.tag}} -f values.yaml
