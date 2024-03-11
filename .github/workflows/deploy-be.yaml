@@ -2,13 +2,14 @@ name: deploy the apps
 
 on:
   repository_dispatch:
-    types:
+    types: [be-deploy]
 jobs:
   run_if_success:
     if: ${{ github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     env:
       TAG: ${{ github.event.client_payload.tag }}
+      env: ${{ github.event.client_payload.env }}
     steps: 
       - name: build the helm chart
         run: helm template

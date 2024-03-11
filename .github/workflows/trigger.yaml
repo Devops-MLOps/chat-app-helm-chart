@@ -1,0 +1,30 @@
+name: trigger be build
+
+on:
+  workflow_dispatch:
+    inputs:
+      Environment:
+          description: choose an environmment
+          type: choice
+          default: dev
+          options:
+            - dev
+            - qa
+            - prod
+      Application:
+          description: choose an application
+          type: choice
+          default: fe
+          options:
+            - be
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: trigger dev repo to build image
+        uses: peter-evans/repository-dispatch@v1
+        with:
+         token: ${{ secrets.TOKEN_TO_TRIGGER }}
+         repository: Devops-MLOps/real-time-chat-application
+         event-type: build_Push
+         client-payload: '{"env": "${{github.event.inputs.Environment}}", "app": "${{github.event.inputs.Application}}"}'
