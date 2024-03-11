@@ -2,7 +2,7 @@ name: deploy the apps
 
 on:
   repository_dispatch:
-    types: [be-deploy]
+    types: [app-deploy]
 jobs:
   run_if_success:
     if: ${{ github.event.client_payload.passed }}
@@ -10,6 +10,10 @@ jobs:
     env:
       TAG: ${{ github.event.client_payload.tag }}
       env: ${{ github.event.client_payload.env }}
+      appName: ${{github.event.client_payload.appName}}
     steps: 
       - name: build the helm chart
-        run: helm template
+        run: |
+          echo $TAG
+          echo $env
+          echo $appName
