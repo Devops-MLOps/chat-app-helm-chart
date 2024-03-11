@@ -1,4 +1,4 @@
-name: deploy the apps
+name: create manifest files
 
 on:
   repository_dispatch:
