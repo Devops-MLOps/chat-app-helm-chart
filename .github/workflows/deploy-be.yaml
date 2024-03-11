@@ -5,7 +5,7 @@ on:
     types: [app-deploy]
 jobs:
   run_if_success:
-    if: ${{ github.event.client_payload.passed }}
+    if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     env:
       TAG: ${{ github.event.client_payload.tag }}
