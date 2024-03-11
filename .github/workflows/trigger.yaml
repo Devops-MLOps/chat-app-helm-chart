@@ -1,4 +1,4 @@
-name: trigger be build
+name: trigger to build & push
 
 on:
   workflow_dispatch:
