@@ -17,6 +17,7 @@ on:
           default: fe
           options:
             - be
+            - fe
 jobs:
   build:
     runs-on: ubuntu-22.04
