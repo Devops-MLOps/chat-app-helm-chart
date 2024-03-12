@@ -1,0 +1,9 @@
+replicas: 4
+
+hpa:
+  enabled: true
+  minreplicas: 4
+  maxreplicas: 10
+  metrics:
+    memorythreshold: 25
+    cputhreshold: 20

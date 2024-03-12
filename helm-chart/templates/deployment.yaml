@@ -41,3 +41,27 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.containers.app.resources | nindent 12 }}
+        - name: rproxy
+          image: {{.Values.containers.rproxy.image.name}}
+          imagePullPolicy: {{ .Values.containers.rproxy.image.pullPolicy }}
+          securityContext:
+            runAsUser: 1001
+            runAsGroup: 1001
+          ports:
+            - name: http
+            {{- if eq .Values.AppName "chat-app-be" }}
+              containerPort: 3001
+            {{- else }}
+              containerPort: 3000
+            {{- end }}
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+          resources:
+            {{- toYaml .Values.containers.rproxy.resources | nindent 12 }}

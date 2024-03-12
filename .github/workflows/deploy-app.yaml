@@ -8,11 +8,11 @@ jobs:
     if: ${{ !github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     env:
-      TAG: ${{ github.event.client_payload.tag }}
-      env: ${{ github.event.client_payload.env }}
-      appName: ${{github.event.client_payload.appName}}
+      TAG:  "20240311120431" #${{ github.event.client_payload.tag }}
+      env: "dev" #${{ github.event.client_payload.env }}
+      appName:  "chat-app-be" #${{github.event.client_payload.appName}}
     steps: 
       - name: checkout the repository
         uses: actions/checkout@v2
       - name: build the helm chart
-        run: helm template ${{github.event.client_payload.appName}}-chart ./helm-chart --set env=${{github.event.client_payload.env} --set appName=${{github.event.client_payload.appName}} --set tag=${{github.event.client_payload.tag}} -f values.yaml
+        run: helm template ${{github.event.client_payload.appName}}-chart ./helm-chart --set Env=${{github.event.client_payload.env} --set AppName=${{github.event.client_payload.appName}} --set Tag=${{github.event.client_payload.tag}} -f values.yaml

@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ .Values.AppName}}-{{ .Values.Env}}"
+  namespace: {{ .Values.Env }}
+spec:
+  type: {{.Values.service.type}}
+  selector: 
+    app: "{{ .Values.AppName}}-{{ .Values.Env}}"
+  ports:
+    {{- toYaml .Values.service.ports | nindent 4 }}

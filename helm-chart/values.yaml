@@ -2,7 +2,6 @@ Env: $env
 Tag: $tag
 AppName: $appName
 
-replicas: 1
 
 containers:
   app:
@@ -16,6 +15,23 @@ containers:
         cpu: 0.5
         memory: 500Mi
   rproxy:
+    image:
+      name: "nginx:1.25.3-bookworm"
+      pullPolicy: true
+    resources:
+      limits:
+        cpu: 1
+        memory: 1Gi
+      requests:
+        cpu: 0.5
+        memory: 500Mi
 
 service:
-  - port: 3000
+  type: ClusterIP
+  ports:
+    - name: http-port
+      port: 80
+      protocol: TCP
+      targetPort: 8080
+
+
