@@ -27,5 +27,5 @@ programming lang :- yaml,HCL
     - node -> current-alpine3.19
     - nginx -> 1.25.1
 
-![High level deployment architecture](/images/High-level-deployment-process.png)
+![High level deployment architecture](/images/high-level-deployment-process.png)
 ![Pod-architetcture](/images/pod-architecture.png)
