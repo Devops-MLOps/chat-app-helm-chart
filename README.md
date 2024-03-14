@@ -7,7 +7,6 @@ what all to install (all have to run local)
 - helm
 - minikube/kind/
 
-
 features of the project:-
 1. the whole project 
 1. Decoupling the developer and infra enginner's deployment.
@@ -28,4 +27,5 @@ programming lang :- yaml,HCL
     - node -> current-alpine3.19
     - nginx -> 1.25.1
 
-![architetcture](/images/architecture.png)
+![High level deployment architecture](/images/High-level-deployment-process.png)
+![Pod-architetcture](/images/pod-architecture.png)
