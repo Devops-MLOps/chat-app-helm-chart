@@ -27,5 +27,8 @@ This project tools:-
     - node -> current-alpine3.19
     - nginx -> 1.25.1
 
+High level deployment architecture
 ![High level deployment architecture](/images/high-level-deployment-process.png)
+
+Pod-architetcture
 ![Pod-architetcture](/images/pod-architecture.png)
