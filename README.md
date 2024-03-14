@@ -13,17 +13,17 @@ features of the project:-
 2. using helm template to generate the required env manifest file.
 3. has multi container pods with nginx, app, filebeat.
 4. has node affinity and taint & tolerance on the pods and namespace.
+
 This project tools:-
-image build :- docker
-image registry :- docker hub
-CICD tool - github-actions
-Environment:- dev, qa, prod
-middleware :- nginx
-infra provisioning :- terraform
-package manager:- helm chart
-depolyment :- EKS(prod),minikube(dev)
-programming lang :- yaml,HCL
-- version
+- image build :- docker
+- image registry :- docker hub
+- CICD tool - github-actions
+- Environment:- dev, qa, prod
+- infra provisioning :- terraform
+- package manager:- helm chart
+- depolyment :- EKS(prod),minikube(dev)
+- programming lang :- yaml,HCL,Golang
+- middleware 
     - node -> current-alpine3.19
     - nginx -> 1.25.1
 
