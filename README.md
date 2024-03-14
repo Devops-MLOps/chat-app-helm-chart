@@ -8,8 +8,8 @@ what all to install (all have to run local)
 - minikube/kind/
 
 features of the project:-
-1. the whole project 
-1. Decoupling the developer and infra enginner's deployment.
+1. the end to end deployment project 
+1. Decoupling the developer and infra enginner's deployments.
 2. using helm template to generate the required env manifest file.
 3. has multi container pods with nginx, app, filebeat.
 4. has node affinity and taint & tolerance on the pods and namespace.
