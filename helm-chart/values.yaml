@@ -16,7 +16,7 @@ containers:
         memory: 500Mi
   rproxy:
     image:
-      name: "nginx:1.25.3-bookworm"
+      name: aksrao1998/nginx:1.25.3
       pullPolicy: true
     resources:
       limits:
@@ -30,8 +30,7 @@ service:
   type: NodePort
   ports:
     - port: 80
-      protocol: TCP
-      targetPort: 8080
-      NodePort: 30008
+      targetPort: 3000
+      nodePort: 30010
 
 

@@ -9,8 +9,12 @@ spec:
   replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
-      labels:
         app: "{{ .Values.AppName}}-{{ .Values.Env}}"
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+      maxSurge: 50%
   template:
     metadata:
       labels:
@@ -18,8 +22,8 @@ spec:
     spec:
       containers:
         - name: {{ .Values.AppName }}
-          image: "aksrao1998/{{ .Values.AppName}}-{{ .Values.Env}}-{{.Values.Tag}}"
-          imagePullPolicy: {{ .Values.containers.app.image.pullPolicy }}
+          image: "aksrao1998/{{ .Values.AppName}}:{{.Values.Tag}}"
+          imagePullPolicy: Always
           securityContext:
             runAsUser: 1001
             runAsGroup: 1001
@@ -32,41 +36,31 @@ spec:
             {{- end }}
               protocol: TCP
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+               port: 3000
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+               port: 3000
           resources:
             {{- toYaml .Values.containers.app.resources | nindent 12 }}
         - name: nginx
           image: {{.Values.containers.rproxy.image.name}}
-          imagePullPolicy: {{ .Values.containers.rproxy.image.pullPolicy }}
+          imagePullPolicy: Always
           securityContext:
             runAsUser: 1001
             runAsGroup: 1001
           ports:
-            - name: http
-            {{- if eq .Values.AppName "chat-app-be" }}
-              containerPort: 3001
-            {{- else }}
-              containerPort: 3000
-            {{- end }}
-              protocol: TCP
+            - containerPort: 8080
           livenessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+              port: 8080
           readinessProbe:
-            httpGet:
-              path: /
-              port: http
+            tcpSocket:
+              port: 8080
           resources:
             {{- toYaml .Values.containers.rproxy.resources | nindent 12 }}
           volumeMounts:
-            - name: "{{ .Values.AppName }}-{{.Values.Env}}-default.conf"
+            - name: "{{ .Values.AppName }}-{{.Values.Env}}-default-conf"
               mountPath: /etc/nginx/conf.d/default.conf
               subPath: default.conf
             - name: logs
@@ -74,6 +68,6 @@ spec:
       volumes:
         - name: logs
           emptyDir: {}
-        - name: "{{ .Values.AppName }}-{{.Values.Env}}-default.conf" 
-          configMaps:
-            name: "{{ .Values.AppName }}-{{.Values.Env}}-configmap" 
+        - name: "{{ .Values.AppName }}-{{.Values.Env}}-default-conf" 
+          configMap:
+            name: "{{ .Values.AppName }}-{{.Values.Env}}-default.conf" 
