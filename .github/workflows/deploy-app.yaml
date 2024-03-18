@@ -1,7 +1,7 @@
 name: create manifest files
 
 on:
-  worflow_dispatch:
+  workflow_dispatch:
     inputs:
         Environment:
             description: choose an environmment
