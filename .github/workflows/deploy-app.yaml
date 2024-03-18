@@ -14,9 +14,9 @@ on:
       Application:
           description: choose an application
           type: choice
-          default: fe
+          default: chat-app-be
           options:
-            - be
+            - chat-app-be
             - fe
       TAG:
          description: choose an tag
@@ -33,14 +33,14 @@ jobs:
     if: ${{ github.event.client_payload.passed }}
     runs-on: ubuntu-latest
     env:
-      TAG: ${{ github.event.client_payload.tag }}
-      env: ${{ github.event.client_payload.env }}
-      appName: ${{github.event.client_payload.appName}}
+      TAG: ${{ github.event.inputs.TAG }}
+      env: ${{ github.event.inputs.Environment }}
+      appName: ${{github.event.inputs.Application}}
     steps: 
       - name: checkout the repository
         uses: actions/checkout@v2
       - name: build the helm chart
-        run: helm template ${{github.event.client_payload.appName}}-chart ./helm-chart --set Env=${{github.event.client_payload.env}} --set AppName=${{github.event.client_payload.appName}} --set Tag=${{github.event.client_payload.tag}} -f ./helm-chart/values.yaml -f ./helm-chart/env/${{github.event.client_payload.env}}/values.yaml
+        run: helm template $appName-chart ./helm-chart --set Env=$env --set AppName=$appName --set Tag=$TAG -f ./helm-chart/values.yaml -f ./helm-chart/env/$env/values.yaml
       - name: set up test cluster
         uses: docker://kindest/node:v1.23.2
         with:
@@ -62,7 +62,7 @@ jobs:
         with:
           version: 'latest'
       - name: Deploy Helm Chart to Dev
-        run: helm upgrade --install ${{github.event.client_payload.appName}}-chart ./helm-chart --set Env=${{github.event.client_payload.env}} --set AppName=${{github.event.client_payload.appName}} --set Tag=${{github.event.client_payload.tag}} -f ./helm-chart/values.yaml -f ./helm-chart/env/${{github.event.client_payload.env}}/values.yaml --namespace dev
+        run: helm upgrade --install $appName-chart ./helm-chart --set Env=$env --set AppName=$appName --set Tag=$TAG -f ./helm-chart/values.yaml -f ./helm-chart/env/$env/values.yaml --namespace dev
       - name: Access the Kind Cluster
         run: |
           kubectl cluster-info --context kind-kind
