@@ -27,11 +27,11 @@ containers:
         memory: 500Mi
 
 service:
-  type: ClusterIP
+  type: NodePort
   ports:
-    - name: http-port
-      port: 80
+    - port: 80
       protocol: TCP
       targetPort: 8080
+      NodePort: 30008
 
 
