@@ -29,8 +29,8 @@ on:
   # repository_dispatch:
   #   types: [app-deploy]
 jobs:
-  run_if_success:
-    if: ${{ true }}
+  # run_if_success:
+  #   if: ${{ true }}
     runs-on: ubuntu-latest
     env:
       TAG: ${{ github.event.inputs.TAG }}
