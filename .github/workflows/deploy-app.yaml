@@ -20,11 +20,11 @@ on:
             - fe
       TAG:
          description: choose an tag
-          type: choice
-          default: 20240317071121
-          options:
-            - 20240317070929
-            - 20240317071121
+         type: choice
+         default: 20240317071121
+         options:
+           - 20240317070929
+           - 20240317071121
 
   # repository_dispatch:
   #   types: [app-deploy]
