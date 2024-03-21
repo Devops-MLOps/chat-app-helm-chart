@@ -1,16 +1,16 @@
 # chat-app-helm-chart
-This project is regarding the deployment of a chat app similar to the whatsapp. 
- we will take the frontend and backend app build image, push to registry, build the manifest files, deploy it to the k8s.
-what all to install (all have to run local)
+This project is regarding the deployment of a chat app similar to the Whatsapp/Omeagle etc. 
+ Our plan is to take the frontend and backend app build image, push to registry, build the manifest files, deploy it to the k8s.
+what all to install (all have to be run locally)
 
 - docker
 - helm
 - minikube/kind/
 
-features of the project:-
-1. the end to end deployment project 
-1. Decoupling the developer and infra enginner's deployments.
-2. using helm template to generate the required env manifest file.
+Features of the project:-
+1. The end to end deployment of a project 
+1. Decoupling the Development and infra Engineer's deployments.
+2. Using helm template to generate the required Environment manifest files.
 3. has multi container pods with nginx, app, filebeat.
 4. has node affinity and taint & tolerance on the pods and namespace.
 
